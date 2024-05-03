@@ -1,0 +1,17 @@
+<!-- templates/base.html -->
+{% if current_user.is_authenticated %}
+    <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        {% if current_user.role == 'Admin' %}
+            <li><a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a></li>
+        {% endif %}
+        <!-- Add other links based on roles -->
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+{% else %}
+    <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        <li><a href="{{ url_for('register') }}">Register</a></li>
+    </ul>
+{% endif %}
